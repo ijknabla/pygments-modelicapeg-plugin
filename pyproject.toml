@@ -11,6 +11,8 @@ packages = [{include = "pygments_modelicapeg_plugin.py"}]
 python = "^3.10"
 pygments = "^2"
 
+[tool.poetry.plugins."pygments.lexers"]
+modelicapeg_lexer = "pygments_modelicapeg_plugin:ModelicaPEGLexer"
 
 [build-system]
 requires = ["poetry-core"]
