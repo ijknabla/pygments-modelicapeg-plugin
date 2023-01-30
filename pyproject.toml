@@ -9,7 +9,7 @@ packages = [{include = "pygments_modelicapeg_plugin.py"}]
 
 [tool.poetry.dependencies]
 python = "^3.6"
-pygments = "^2"
+pygments = ">=2"
 
 [tool.poetry.plugins."pygments.lexers"]
 modelicapeg_lexer = "pygments_modelicapeg_plugin:ModelicaPEGLexer"
