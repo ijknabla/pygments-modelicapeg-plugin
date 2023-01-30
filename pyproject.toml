@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "pygments-modelicapeg-plugin"
+version = "0.0.0"
+description = "pygments plugin for .modelicapeg"
+authors = ["ijknabla <ijknabla@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "pygments_modelicapeg_plugin.py"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
