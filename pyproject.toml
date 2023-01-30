@@ -9,6 +9,7 @@ packages = [{include = "pygments_modelicapeg_plugin.py"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
+pygments = "^2"
 
 
 [build-system]
