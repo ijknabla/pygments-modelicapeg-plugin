@@ -30,14 +30,8 @@ class ModelicaPEGLexer(RegexLexer):
         ],
         "common": [
             include("comment"),
-            (r'"([^"]|"(?="))*"', String),
-            (r"'([^']|'(?='))*'", String),
-            (r"r'([^'\\]|\\.)*'", String.Regex),
-            (r'r"([^"\\]|\\.)*"', String.Regex),
+            include("primary"),
             (r"[:=|]", Operator),
-            (r"(`)([a-z]+)(`)", bygroups(None, Keyword, None)),
-            (r"[A-Z]([\-0-9A-Z]*[0-9A-Z])?", Name),
-            (r"[a-z]([\-0-9a-z]*[0-9a-z])?", Name),
             (r"\[", Punctuation, "["),
             (r"\{", Punctuation, "{"),
             (r"\(", Punctuation, "("),
@@ -46,5 +40,14 @@ class ModelicaPEGLexer(RegexLexer):
         "comment": [
             (r"/\*([^*]|\*[^/])*\*/", Comment.Multiline),
             (r"//.*", Comment.Single),
+        ],
+        "primary": [
+            (r"(`)([a-z]+)(`)", bygroups(None, Keyword, None)),
+            (r'"([^"]|"(?="))*"', String),
+            (r"'([^']|'(?='))*'", String),
+            (r"r'([^'\\]|\\.)*'", String.Regex),
+            (r'r"([^"\\]|\\.)*"', String.Regex),
+            (r"[A-Z]([\-0-9A-Z]*[0-9A-Z])?", Name),
+            (r"[a-z]([\-0-9a-z]*[0-9a-z])?", Name),
         ]
     }
