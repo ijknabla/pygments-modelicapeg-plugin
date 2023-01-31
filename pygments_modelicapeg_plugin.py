@@ -29,8 +29,7 @@ class ModelicaPEGLexer(RegexLexer):
             include("common"),
         ],
         "common": [
-            (r"/\*([^*]|\*[^/])*\*/", Comment.Multiline),
-            (r"//.*", Comment.Single),
+            include("comment"),
             (r'"([^"]|"(?="))*"', String),
             (r"'([^']|'(?='))*'", String),
             (r"r'([^'\\]|\\.)*'", String.Regex),
@@ -44,4 +43,8 @@ class ModelicaPEGLexer(RegexLexer):
             (r"\(", Punctuation, "("),
             (r"\s+", Text),
         ],
+        "comment": [
+            (r"/\*([^*]|\*[^/])*\*/", Comment.Multiline),
+            (r"//.*", Comment.Single),
+        ]
     }
