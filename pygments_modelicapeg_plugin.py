@@ -5,7 +5,7 @@ from pygments.token import Comment, Keyword, Name, Operator, Punctuation, String
 
 STRING_LITERAL = r"'([^']|'(?='))*'" "|" r'"([^"]|"(?="))*"'
 REGEX_LITERAL = r"r'([^'\\]|\\.)*'" "|" r'r"([^"\\]|\\.)*"'
-IDENTIFIER = r"[A-Z]([\-0-9A-Z]*[0-9A-Z])?" "|" r"[a-z]([\-0-9a-z]*[0-9a-z])?"
+IDENTIFIER = r"[A-Z][\-0-9A-Z]*" "|" r"[a-z][\-0-9a-z]*"
 
 
 class ModelicaPEGLexer(RegexLexer):
@@ -35,7 +35,7 @@ class ModelicaPEGLexer(RegexLexer):
         "common": [
             include("comment"),
             include("primary"),
-            (r"[:=|]", Operator),
+            (r"[|]", Operator),
             (r"\[", Punctuation, "["),
             (r"\{", Punctuation, "{"),
             (r"\(", Punctuation, "("),
@@ -49,6 +49,7 @@ class ModelicaPEGLexer(RegexLexer):
             (r"(`)([a-z]+)(`)", bygroups(None, Keyword, None)),
             (STRING_LITERAL, String),
             (REGEX_LITERAL, String.Regex),
+            (rf"({IDENTIFIER})(\s*)([:=])", bygroups(Name.Variable, Text, Operator)),
             (IDENTIFIER, Name),
         ],
     }
